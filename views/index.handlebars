@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Burger Timeeeeee</title>
-    <link rel="stylesheet" href="../public/assets/css/burger_style.css">
-  </head>
-  <body>
+<h1>Burger Timeeeeeee</h1>
 
-  </body>
-</html>
+<h2>Here's what we have to eat!</h2>
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+
+<h2>Make your own burger!</h2>
+<form class="create-burger-form">
+  <div class="burger-form">
+    <label for="burger_name">Name your burger: </label>
+    <input type="text" name="burger_name" id="burger_name" value="">
+  </div>
+
+  <button type="submit">Add your burger!</button>
+
+</form>

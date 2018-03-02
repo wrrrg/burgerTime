@@ -43,15 +43,15 @@ router.put("/api/burgers/:id", function(req, res) {
   });
 });
 // I don't think we need this since we leave all burgers in the DB, but it can't hurt I guess to be able to remove them if need be. Might comment this one out.
-router.delete("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-  burger.delete(condition, function(result) {
-    if (result.affectedRows == 0) {
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
-// this is going back to server.js to use as a a router. 
+// router.delete("/api/burgers/:id", function(req, res) {
+//   var condition = "id = " + req.params.id;
+//   burger.delete(condition, function(result) {
+//     if (result.affectedRows == 0) {
+//       return res.status(404).end();
+//     } else {
+//       res.status(200).end();
+//     }
+//   });
+// });
+// this is going back to server.js to use as a a router.
 module.exports = router;
