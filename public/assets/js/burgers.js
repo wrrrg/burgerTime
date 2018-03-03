@@ -1,21 +1,21 @@
 // This is going to be all the jquery stuff for our burgers
 
-
 $(function() {
+  // the button that devours the burgers
   $(".devour-button").on("click", function(event) {
     var id = $(this).data("id");
-    var newDevour = $(this).data("newDevour");
+    var newDevour = $(this).data("devoured");
 
-    var newDevourState = {
-      devoured: newDevour
+    var newDevouredState = {
+      devoured: true
     };
 
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
-      data: newDevourState
+      data: newDevouredState
     }).then(
       function() {
-        console.log("I ate da burger, devoured = " newDevour);
+        console.log("I ate da burger, devoured = " + newDevour);
         location.reload();
       }
     );
@@ -26,7 +26,7 @@ $(function() {
     event.preventDefault();
 
     var newBurger = {
-      name: $("#burger_name")
+      name: $("#burger_name").val().trim()
     };
 
   // post request to send new burger to db

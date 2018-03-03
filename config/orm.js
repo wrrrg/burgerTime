@@ -13,7 +13,7 @@ function printQuestionMarks(num) {
 
 // Stole this one too - objects key/value to SQL for the update method
 
-function objToSql(ob) {
+function toSql(ob) {
   var arr = [];
 
   // loop through the keys and push the key/value as a string int arr
@@ -66,11 +66,11 @@ var orm = {
     });
   },
   updateOne: function(table, objColVals, condition, cb){
-    var queryString = "UPDATE" + table;
+    var queryString = "UPDATE " + table;
 
     queryString += " SET ";
     // here we need to convert objects to SQL lingo
-    queryString += toSQL(objColVals);
+    queryString += toSql(objColVals);
     queryString += " WHERE ";
     queryString += condition;
 
