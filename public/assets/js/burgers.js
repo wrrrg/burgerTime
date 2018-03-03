@@ -21,6 +21,25 @@ $(function() {
     );
   });
 
+  $(".undevour-button").on("click", function(event) {
+    // var id = $(this).data("id");
+    // var newDevour = $(this).data("devoured");
+
+    var newDevouredState = {
+      devoured: false
+    };
+
+    $.ajax("/api/restoreBurgers", {
+      type: "PUT",
+      data: newDevouredState
+    }).then(
+      function() {
+        console.log("I un-ate da burgers.");
+        location.reload();
+      }
+    );
+  });
+
   $(".create-burger-form").on("submit", function(event) {
     // for any submit event
     event.preventDefault();

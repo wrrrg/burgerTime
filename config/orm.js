@@ -82,6 +82,23 @@ var orm = {
       cb(result);
     });
   },
+
+  updateAll: function(table, objColVals, cb){
+    var queryString = "UPDATE " + table;
+
+    queryString += " SET ";
+    // here we need to convert objects to SQL lingo
+    queryString += toSql(objColVals);
+    // queryString +=  "WHERE id > 0;" ;
+
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+  },
   // instructions don't call for this but it seems like we should have this?
   delete: function(table, condition, cb) {
     var queryString = "DELETE FROM " + table;

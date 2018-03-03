@@ -42,6 +42,22 @@ router.put("/api/burgers/:id", function(req, res) {
     }
   });
 });
+
+// another put to restore all burgers
+router.put("/api/restoreBurgers", function(req, res) {
+  // var condition = "id = " + req.params.id;
+  //
+  // console.log("condition: " + condition);
+  burger.updateAll ({
+    devoured: false
+  }, function(result) {
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    } else {
+      res.status(200).end();
+    }
+  });
+});
 // I don't think we need this since we leave all burgers in the DB, but it can't hurt I guess to be able to remove them if need be. Might comment this one out.
 // router.delete("/api/burgers/:id", function(req, res) {
 //   var condition = "id = " + req.params.id;

@@ -16,6 +16,11 @@ var burger = {
       cb(res);
     });
   },
+  updateAll: function(objColVals, cb) {
+    orm.updateAll("burgers", objColVals, function(res) {
+      cb(res);
+    });
+  },
   delete: function(condition, cb) {
     orm.delete("burgers", condition, function(res) {
       cb(res);
